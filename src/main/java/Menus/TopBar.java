@@ -1,3 +1,5 @@
+package Menus;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TopBar {
 
-WebDriver driver;
+    WebDriver driver;
 
     @FindBy(how = How.LINK_TEXT, using = "Home")
     WebElement home;
@@ -22,9 +24,9 @@ WebDriver driver;
     WebElement blog;
     @FindBy(how = How.LINK_TEXT, using = "Contact")
     WebElement contact;
-    @FindBy(how=How.LINK_TEXT, using = "Draggable")
+    @FindBy(how = How.LINK_TEXT, using = "Draggable")
     WebElement draggable;
-    @FindBy(how=How.LINK_TEXT, using = "Tabs")
+    @FindBy(how = How.LINK_TEXT, using = "Tabs")
     WebElement tabs;
 
 
@@ -44,13 +46,13 @@ WebDriver driver;
         demo.click();
     }
 
-    public void clickDraggable(){
+    public void clickDraggable() {
         WebElement myElement = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.linkText("Draggable")));
         draggable.click();
     }
 
-    public void clickTabs(){
+    public void clickTabs() {
         tabs.click();
         WebElement myElement = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.linkText("Tabs")));
