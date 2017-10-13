@@ -42,11 +42,23 @@ public class RegistrationPage {
     @FindBy(how = How.ID, using = "description")
     WebElement description;
 
-    @FindBy(how = How.ID, using = "password-2")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"password_2\"]")
     WebElement password;
 
-    @FindBy(how = How.ID, using = "confirm_password_password-2")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"confirm_password_password_2\"]")
     WebElement confirmPassword;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"pie_register\"]/li[14]/div/input")
+    WebElement submit;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"pie_register\"]/li[3]/div/div[1]/input[1]")
+    WebElement dance;
+
+    @FindBy(how = How.CLASS_NAME, using = "piereg_message")
+    WebElement RegistrationMessage;
+
+    @FindBy(how=How.CLASS_NAME, using ="piereg_login_error")
+    WebElement errorMessage;
 
     public enum Hobby {
         DANCE, READING, CRICKET
@@ -72,7 +84,7 @@ public class RegistrationPage {
 
     public void chooseMonth() {
         Select valueMonth = new Select(month);
-        valueMonth.selectByValue("January");
+        valueMonth.selectByValue("1");
     }
 
     public void chooseDay() {
@@ -94,7 +106,7 @@ public class RegistrationPage {
     }
 
     public void typeMail(String mailName) {
-        username.sendKeys(mailName);
+        email.sendKeys(mailName);
     }
 
     public void typeDescription(String describe) {
@@ -102,6 +114,8 @@ public class RegistrationPage {
     }
 
     public void typePassword(String passwordName) {
+        // password.click();
+
         password.sendKeys(passwordName);
     }
 
@@ -119,9 +133,27 @@ public class RegistrationPage {
         for (MaritalStatus listMarital : maritalStatuses) {
             driver.findElement(By.id(listMarital.toString().toLowerCase())).click();
         }
+    }
 
+    public void clickSubmitnButton() {
+        submit.click();
+    }
+
+    public void selectDance() {
+        dance.click();
+    }
+
+    public void displayRegistrationMessage() {
+        RegistrationMessage.getText();
+    }
+    public void displayErrorMessage(){
+
+        System.out.println("Message from demoqa.com: " + errorMessage.getText()+ " Please change the username.") ;
     }
 }
+
+
+
 
 
 
